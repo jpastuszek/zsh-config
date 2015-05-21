@@ -121,13 +121,14 @@ setopt extended_glob            # activate complex pattern globbing
 setopt glob_dots                # include dotfiles in globbing
 setopt print_exit_value         # print return value if non-zero
 unsetopt beep                   # no bell on error
-unsetopt bg_nice                # no lower prio for background jobs
-unsetopt clobber                # must use >| to truncate existing files
+#unsetopt bg_nice                # no lower prio for background jobs
+#unsetopt clobber                # must use >| to truncate existing files
 unsetopt hist_beep              # no bell on error in history
-unsetopt hup                    # no hup signal at shell exit
+#unsetopt hup                    # no hup signal at shell exit
 unsetopt ignore_eof             # do not exit on end-of-file
 unsetopt list_beep              # no bell on ambiguous completion
 unsetopt rm_star_silent         # ask for confirmation for `rm *' or `rm path/*'
+typeset -U path
 print -Pn "\e]0; %n@%M: %~\a"   # terminal title
 EPORTTIME=4						# report CPU usage and timing for commands running longer than this seconds
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'	# don't stop C-w on this chars
@@ -149,14 +150,5 @@ precmd () { vcs_info }
 setopt PROMPT_SUBST     # allow funky stuff in prompt
 PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%M %{$fg_bold[blue]%}%~${vcs_info_msg_0_} %(!.#.$)%{$reset_color%} '
 
-##
-# User
-##
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/opt/local/bin:/opt/local/sbin"
-
-source ~/.zsh/local
-
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+source ~/.profile
 
